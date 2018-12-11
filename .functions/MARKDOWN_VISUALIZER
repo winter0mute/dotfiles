@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+#HelperContainer - MARKDOWN_VISUALIZER
+#Container for showing markdown files from the actual directory in a browser (localhost)
+MARKDOWN_VISUALIZER(){
+	if [ "$1" ]; then
+		BIND_PORT="$1"
+	else
+		BIND_PORT=80
+	fi
+	docker run -ti --rm -p "${BIND_PORT}":33001 -v "$PWD":/data andreaskoch/allmark
+}
