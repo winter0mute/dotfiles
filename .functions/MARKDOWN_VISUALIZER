@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
 #HelperContainer - MARKDOWN_VISUALIZER
-#Container for showing markdown files from the actual directory in a browser (localhost)
+#Container for showing markdown files from the actual directory in a browser on localhost:80 or on tha port is a parameter was provided
 MARKDOWN_VISUALIZER(){
 	if [ "$1" ]; then
 		BIND_PORT="$1"
 	else
 		BIND_PORT=80
 	fi
+	echo "Trying to start Markdown Visualizer on port ${BIND_PORT}. If noting shows up than it works correctly. :)"
+	echo "In this case go to localhost:${BIND_PORT} in a browser."
 	docker run -ti --rm -p "${BIND_PORT}":33001 -v "$PWD":/data andreaskoch/allmark
 }
